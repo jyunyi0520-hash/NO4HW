@@ -202,19 +202,25 @@ function updateUIForUser() {
 async function loadAppArgs() {
     showLoading('正在接收星球菜單電波... 📡');
     try {
+        // 1. 取得今日設定的餐廳名單
         const todayConfig = await getTodayRestaurants();
         document.getElementById('today-restaurants').textContent = todayConfig.length > 0 ? `(${todayConfig.join(', ')})` : '(尚未設定航線)';
 
+        // 2. 取得所有菜單
         const allMenu = await getAllMenu();
         
-        // 過濾並儲存今日菜單至全域變數
-        currentGlobalMenu = allMenu.filter(item => todayRestaurants.includes(item.restaurant));
+        // 3. 過濾並儲存今日菜單至全域變數
+        // 🐛 修正：這裡的變數名稱改回 todayConfig
+        currentGlobalMenu = allMenu.filter(item => todayConfig.includes(item.restaurant));
         
+        // 4. 渲染菜單
         renderMenu(currentGlobalMenu);
         hideLoading();
         document.getElementById('app-section').classList.remove('hidden');
     } catch (err) {
-        alert("訊號異常，載入資料失敗。");
+        // 💡 建議：加上 console.error，以後如果在宇宙迷航，可以按 F12 打開開發者工具看詳細的錯誤原因
+        console.error("🚨 導航系統錯誤詳情：", err);
+        alert("訊號異常，載入資料失敗。請按 F12 查看主控台錯誤訊息！");
         hideLoading();
     }
 }
