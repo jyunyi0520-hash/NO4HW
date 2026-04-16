@@ -5,7 +5,7 @@
 // --- 設定 ---
 const CONFIG = {
     CLIENT_ID: '809889420933-c83k3kmu0pmbc5su2p76qakp3982ru5k.apps.googleusercontent.com',
-    API_KEY: 'AIzaSyC9bWxTMtYGIQvDElLJm0uzX_NeED4zNHs',
+    API_KEY: 'AIzaSyDldOr8xzv2T6HR4U16jhGpkdybIJ7GvV4',
     SPREADSHEET_ID: '1KlgrLdxKG2G-UamhDFMz_1kke7wgege03PSIUhU15Ok',
     DISCOVERY_DOC: 'https://sheets.googleapis.com/$discovery/rest?version=v4',
     SCOPES: 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid',
